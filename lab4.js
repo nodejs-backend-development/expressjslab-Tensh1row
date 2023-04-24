@@ -6,10 +6,10 @@ const port = process.env.PORT || 3000;
 
 const API_URL = 'https://gorest.co.in/public/v2';
 
-// Middleware для обробки запитів з JSON
+
 app.use(express.json());
 
-// Middleware для збору статистики з кожного запиту
+
 function logRequest(req, res, next) {
   const routeParams = req.params;
   const queryParams = req.query;
@@ -24,7 +24,7 @@ function logRequest(req, res, next) {
   next();
 }
 
-// Обробник запиту для отримання списку todo користувача
+// отримання списку todo користувача
 app.get('/users/:userId/todos', logRequest, async (req, res) => {
   try {
     const userId = req.params.userId;
@@ -37,7 +37,7 @@ app.get('/users/:userId/todos', logRequest, async (req, res) => {
   }
 });
 
-// Обробник запиту для створення todo користувача
+//створення todo користувача
 app.post('/users/:userId/todos', logRequest, async (req, res) => {
   try {
     const userId = req.params.userId;
